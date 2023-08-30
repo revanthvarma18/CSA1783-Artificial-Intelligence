@@ -1,3 +1,6 @@
+sum(0, 0).
 sum(N, Sum) :-
-    Sum is (N + 1) * N / 2.
-	write(Sum).
+    N > 0,
+    N1 is N - 1,
+    sum(N1, Sum1),
+    Sum is N + Sum1.
