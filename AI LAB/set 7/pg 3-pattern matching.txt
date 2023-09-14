@@ -1,0 +1,17 @@
+% Facts about first names and second names
+first_name(tonyblair, tony).
+first_name(georgebush, georgedubya).
+second_name(tonyblair, blair).
+second_name(georgebush, bush).
+
+% Rule to match a full name to its first and second names
+full_name(First, Second, Full) :-
+    first_name(Full, First),
+    second_name(Full, Second).
+
+% Example queries:
+% - To find the first and second names of a full name:
+%   ?- full_name(First, Second, tonyblair).
+%
+% - To find the full names that match a given first and second name:
+%   ?- full_name(george, bush, Full).

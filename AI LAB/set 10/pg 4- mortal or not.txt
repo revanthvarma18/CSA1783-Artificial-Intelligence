@@ -1,0 +1,20 @@
+% Define facts about individuals and their mortality status
+man(socrates).
+man(einstein).
+man(alexander).
+
+% Define a rule to determine mortality (for example, assume all men are mortal)
+mortal(X) :- man(X).
+
+% Example queries:
+% - To check if Socrates is mortal:
+%   ?- mortal(socrates).
+%
+% - To check if Einstein is mortal:
+%   ?- mortal(einstein).
+%
+% - To check if Alexander is mortal:
+%   ?- mortal(alexander).
+%
+% - To check the mortality of any other person (e.g., mortal(john)):
+%   ?- mortal(john).

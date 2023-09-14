@@ -1,0 +1,18 @@
+% Facts about item locations
+location(desk, office).
+location(apple, kitchen).
+location(flashlight, desk).
+
+% Rule to find the location of an item
+find_location(Item, Location) :-
+    location(Item, Location).
+
+% Example queries:
+% - To find the location of an item (e.g., "desk"):
+%   ?- find_location(desk, Location).
+%
+% - To find the location of another item (e.g., "apple"):
+%   ?- find_location(apple, Location).
+%
+% - To find the location of the flashlight:
+%   ?- find_location(flashlight, Location).

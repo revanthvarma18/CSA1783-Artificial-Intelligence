@@ -1,0 +1,19 @@
+% Define the interpretation rules
+
+% If the goal is 'true', it is considered satisfied.
+interpret(true) :- !.
+
+% If the goal is a conjunction (GoalA AND GoalB), interpret both goals.
+interpret((GoalA, GoalB)) :- !,
+    interpret(GoalA),
+    interpret(GoalB).
+
+% Define some example facts and rules for testing
+happy(john).
+rich(john).
+healthy(mary).
+
+% Define a goal for inference
+goal(X) :- happy(X), (rich(X); healthy(X)).
+
+

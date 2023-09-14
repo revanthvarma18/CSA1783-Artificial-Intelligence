@@ -1,0 +1,26 @@
+% Predicates
+hypothesis(Name, Disease)
+symptom(Name, Indication)
+
+% Facts about symptoms
+symptom(amit, fever).
+symptom(amit, rash).
+
+% Rules for disease causation
+causes_disease(Disease, Symptoms) :-
+    findall(Symptom, symptom(_, Symptom), AllSymptoms),
+    subset(Symptoms, AllSymptoms),  % Check if Symptoms is a subset of AllSymptoms
+    associated_disease(Disease, Symptoms).
+
+% Facts about associated diseases and their symptoms
+associated_disease(covid19, [fever, cough, shortness_of_breath]).
+associated_disease(measles, [fever, rash, cough]).
+
+% Rule to predict diseases based on symptoms
+predict_disease(Name, Disease) :-
+    symptom(Name, Symptom),
+    causes_disease(Disease, [Symptom]).
+
+% Example queries:
+% - To predict the disease based on symptoms of "amit":
+%   ?- predict_disease(amit, Disease).

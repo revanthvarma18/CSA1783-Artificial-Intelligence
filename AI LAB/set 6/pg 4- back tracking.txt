@@ -1,0 +1,16 @@
+% Facts about the colors of fruits
+colour(cherry, red).
+colour(banana, yellow).
+colour(apple, red).
+colour(apple, green).
+colour(orange, orange).
+colour(X, unknown).
+
+% Rule to predict the color of a fruit
+predict_color(Fruit, Color) :-
+    colour(Fruit, Color).
+predict_color(Fruit, Color) :-
+    colour(Fruit, unknown),
+    Color = unknown.
+
+% Example query: predict_color(Fruit, Color).

@@ -1,0 +1,21 @@
+% Facts about celestial bodies and their orbits
+orbits(mercury, sun).
+orbits(venus, sun).
+orbits(earth, sun).
+orbits(mars, sun).
+orbits(moon, earth).
+orbits(phobos, mars).
+orbits(deimos, mars).
+
+% Define a rule to find all objects orbiting a given body
+objects_orbiting(Body, Objects) :-
+    findall(Object, orbits(Object, Body), Objects).
+
+% Define a rule to find the central body of a given object
+central_body(Object, CentralBody) :-
+    orbits(Object, CentralBody).
+
+% Define a rule to find all objects that share the same central body
+objects_sharing_central_body(Object, Objects) :-
+    central_body(Object, CentralBody),
+    findall(OtherObject, orbits(OtherObject, CentralBody), Objects).

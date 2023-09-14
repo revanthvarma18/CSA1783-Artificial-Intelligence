@@ -1,0 +1,18 @@
+% Predicate to count the number of vowels in a string
+count_vowels(String, Count) :-
+    string_lower(String, LowerCaseString),  % Convert the string to lowercase
+    count_vowels_helper(LowerCaseString, 0, Count).
+
+% Helper predicate to recursively count vowels
+count_vowels_helper([], Count, Count).
+count_vowels_helper([Char|Rest], Acc, Count) :-
+    (is_vowel(Char) -> NewAcc is Acc + 1; NewAcc is Acc),
+    count_vowels_helper(Rest, NewAcc, Count).
+
+% Predicate to check if a character is a vowel
+is_vowel(Char) :-
+    member(Char, "aeiouAEIOU").  % Define a list of vowels in both cases
+
+% Example query:
+% - To find the number of vowels in the given fact:
+%   ?- count_vowels("This is my first Degree in Saveetha School of Engineering.", Count).

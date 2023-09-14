@@ -1,0 +1,27 @@
+% Facts about animals and their sizes
+dog(fido).
+dog(rover).
+dog(jane).
+dog(tom).
+dog(fred).
+dog(henry).
+cat(mary).
+cat(harry).
+cat(bill).
+cat(steve).
+size(small, henry).
+size(medium, harry).
+size(medium, fred).
+size(large, fido).
+size(large, mary).
+size(large, tom).
+size(large, fred).
+size(large, steve).
+size(large, jim).
+size(large, mike).
+
+% Define a rule to identify large dogs
+large_dog(X) :- dog(X), size(large, X).
+
+% Define a rule to identify small cats
+small_cat(X) :- cat(X), size(small, X).

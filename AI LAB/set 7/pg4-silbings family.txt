@@ -1,0 +1,70 @@
+% Facts about gender
+female(sarah).
+female(rebekah).
+female(hagar_concubine).
+female(milcah).
+female(bashemath).
+female(mahalath).
+female(first_daughter).
+female(rachel).
+female(labans_wife).
+
+male(terah).
+male(abraham).
+male(nahor).
+male(haran).
+male(isaac).
+male(ismael).
+male(uz).
+male(kemuel).
+
+% Define parent-child relationships
+parent(abraham, isaac).
+parent(sarah, isaac).
+parent(abraham, ismael).
+parent(hagar_concubine, ismael).
+
+% Define sibling relationships
+sibling(X, Y) :-
+    parent(Z, X),
+    parent(Z, Y),
+    X \= Y.
+
+% Define spouse relationships
+spouse(abraham, sarah).
+spouse(abraham, hagar_concubine).
+spouse(haran, first_daughter).
+spouse(terah, labans_wife).
+
+% Define grandparent-grandchild relationships
+grandparent(X, Y) :-
+    parent(X, Z),
+    parent(Z, Y).
+
+% Define aunt-uncle and niece-nephew relationships
+aunt_or_uncle(X, Y) :-
+    parent(Z, Y),
+    sibling(X, Z).
+    
+niece_or_nephew(X, Y) :-
+    parent(Z, X),
+    sibling(Z, Y).
+
+% Define in-law relationships
+in_law(X, Y) :-
+    spouse(X, Z),
+    sibling(Z, Y).
+
+% Example queries:
+% - To find siblings of a person:
+%   ?- sibling(isaac, X).
+%
+% - To find grandparents of a person:
+%   ?- grandparent(X, isaac).
+%
+% - To find aunts/uncles or nieces/nephews of a person:
+%   ?- aunt_or_uncle(X, isaac).
+%   ?- niece_or_nephew(X, ismael).
+%
+% - To find in-laws of a person:
+%   ?- in_law(X, isaac).

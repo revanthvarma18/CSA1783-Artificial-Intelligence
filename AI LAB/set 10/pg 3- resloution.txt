@@ -1,0 +1,20 @@
+% Clauses representing the given statements
+
+% Clause 1: Anyone passing history exams and winning the lottery is happy.
+happy(X) :- passing_history_exams(X), winning_lottery(X).
+
+% Clause 2: Anyone who studies or is lucky can pass all his exams.
+pass_all_exams(X) :- studies(X).
+pass_all_exams(X) :- lucky(X).
+
+% Clause 3: John did not study, but he is lucky.
+not_studying(john).
+lucky(john).
+
+% Clause 4: Anyone who is lucky wins the lottery.
+winning_lottery(X) :- lucky(X).
+
+% Negation of the goal: We want to prove that John is happy.
+:- not happy(john).
+
+% Resolution refutation to prove that John is happy

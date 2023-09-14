@@ -1,0 +1,14 @@
+% Facts about rainy and cold conditions
+rainy(chennai).
+rainy(coimbatore).
+rainy(ooty).
+
+% Rule to infer cold conditions based on rainy conditions
+cold(City) :- rainy(City).
+
+% Forward chaining using a helper predicate
+forward_chain :- cold(City), write(City), nl, fail.
+forward_chain.
+
+% Starting the forward chaining process
+:- initialization(forward_chain).
